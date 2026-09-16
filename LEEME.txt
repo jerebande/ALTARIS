@@ -1,0 +1,23 @@
+ALTARIS — Sitio web
+=====================
+
+Cómo subirlo:
+1. Subí toda esta carpeta (index.html + carpeta assets/) a tu hosting, manteniendo la misma estructura.
+2. El fondo del Inicio es un video. Agregá tu archivo de video a la carpeta "assets" y renombralo a "hero.mp4"
+   (recomiendo usar uno de los aéreos con niebla, en horizontal). Mientras no esté, se ve la imagen
+   "aerea-niebla.jpg" como fondo estático — la página funciona igual.
+3. Los videos que me pasaste pesan bastante (80 a 170 MB cada uno). Para que el sitio cargue rápido,
+   te recomiendo comprimirlos antes de subirlos (HandBrake o el compresor de tu editor) a algo entre
+   10 y 25 MB, formato .mp4, resolución 1920x1080 está de sobra para web.
+4. En la sección Contacto, el formulario abre el mail del visitante (mailto:hola@altaris.com) —
+   cambiá esa dirección en index.html por tu email real. Si más adelante querés que el formulario
+   envíe sin abrir el mail del visitante, hay que conectarlo a un backend o a un servicio como Formspree.
+5. Los enlaces de Instagram y YouTube están armados con @altaris.visual y "Altaris Explorer" —
+   revisá que apunten a las URLs exactas de tus cuentas.
+
+Qué falta para completar el sitio:
+- Sección "Proyectos/Exploraciones": hoy usa 4 fotos de ejemplo (Alberti, Benítez, Larrea, Sierra de
+  la Ventana como placeholder). A medida que tengas fotos reales de cada lugar, reemplazalas.
+- Sección "Altaris Explorer": los episodios están como "próximamente". Cuando subas el primer video
+  a YouTube, se puede reemplazar esa lista por el embed real o por miniaturas con link a cada video.
+- Sección "Visual Studio": usa 3 fotos de ejemplo. Se puede ampliar a más reels a medida que los tengas.
