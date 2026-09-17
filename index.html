@@ -1131,22 +1131,49 @@
   .work-grid{ display:grid; grid-template-columns:1fr; gap:2.5rem; }
   @media (min-width:900px){ .work-grid{ grid-template-columns:1fr 1fr; gap:6rem; } }
   .work h2{
-    font-size:clamp(2.1rem, 7vw, 3.6rem);
-    max-width:11ch; color:#161409; line-height:1.05;
+    font-size:clamp(2rem, 8vw, 3.6rem);
+    color:#161409;
+    line-height:1.05;
+    max-width:100%;
+  }
+  @media (min-width:900px){
+    .work h2{ max-width:11ch; }
   }
   .work-copy p{ margin-top:1.4rem; max-width:48ch; color:#3c382e; font-size:0.95rem; }
   @media (min-width:900px){ .work-copy p{ margin-top:1.6rem; font-size:1rem; } }
+
   .services{
     margin-top:2rem;
-    display:flex; flex-wrap:wrap; gap:0.7rem 1.6rem;
-    font-size:0.82rem; font-weight:600; color:#5c5646;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.6rem 1.2rem;
+    font-size:0.82rem;
+    font-weight:600;
+    color:#5c5646;
     letter-spacing:0.02em;
   }
-  @media (min-width:900px){ .services{ margin-top:2.5rem; font-size:0.85rem; gap:0.8rem 1.8rem; } }
-  .services span::after{ content:"·"; margin-left:1.6rem; color:#a89f88; }
-  .services span:last-child::after{ content:""; }
-  .work-cta{ border-top:1px solid var(--line-on-light); padding-top:2rem; }
-  @media (min-width:900px){ .work-cta{ padding-top:2.5rem; } }
+  @media (min-width:900px){
+    .services{ margin-top:2.5rem; font-size:0.85rem; gap:0.8rem 1.8rem; }
+  }
+
+  /* Solo mostrar el separador en desktop, donde van en línea */
+  @media (min-width:700px){
+    .services span::after{
+      content:"·";
+      margin-left:1.6rem;
+      color:#a89f88;
+    }
+    .services span:last-child::after{ content:""; }
+  }
+
+  .work-cta{
+    border-top:1px solid var(--line-on-light);
+    padding-top:2rem;
+    margin-top:0.5rem;
+  }
+  @media (min-width:900px){
+    .work-cta{ padding-top:2.5rem; margin-top:0; }
+  }
   .work-cta p{ color:#3c382e; margin-bottom:1.6rem; max-width:44ch; font-size:0.95rem; }
   @media (min-width:900px){ .work-cta p{ margin-bottom:1.8rem; font-size:1rem; } }
   .btn-dark{
@@ -1541,8 +1568,8 @@
         <span class="tag">Larrea</span>
       </div>
       <div class="project-card reveal reveal-delay-2">
-        <img src="assets/campanario-atardecer.jpg" alt="Campanario al atardecer entre la niebla">
-        <span class="tag">Gonzales Chaves</span>
+        <img src="assets/mechita.jpg" alt="Vista aérea de Mechita con los talleres ferroviarios al atardecer">
+        <span class="tag">Mechita</span>
       </div>
       <div class="project-card reveal reveal-delay-3">
         <img src="assets/alberti.jpeg" alt="Bandera argentina en el reloj del pueblo entre los árboles">
