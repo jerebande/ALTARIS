@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.altarisvisualstudio.com.ar/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/hero.jpg</image:loc>
+      <image:caption>Explorador caminando por las vías al atardecer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/facundo-retrato.jpg</image:loc>
+      <image:caption>Facundo, creador de Altaris, al atardecer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/campo-silos.jpg</image:loc>
+      <image:caption>Campo con silos y tormenta al fondo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/ruta.jpg</image:loc>
+      <image:caption>Ruta 76 con camioneta hacia las sierras</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/cupula-detalle.jpg</image:loc>
+      <image:caption>Detalle de una cúpula histórica entre la niebla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/explorador-bosque.jpg</image:loc>
+      <image:caption>Explorador caminando por un bosque con niebla</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/benitez.png</image:loc>
+      <image:caption>Atardecer dorado con molino y silos en Benítez</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/estacion-abandonada.jpg</image:loc>
+      <image:caption>Estación de tren abandonada con cartel Larrea</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/mechita.jpg</image:loc>
+      <image:caption>Vista aérea de Mechita con los talleres ferroviarios</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/alberti.jpeg</image:loc>
+      <image:caption>Bandera argentina en el reloj del pueblo</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.altarisvisualstudio.com.ar/assets/sierradelaventana.png</image:loc>
+      <image:caption>Facundo en Sierra de la Ventana</image:caption>
+    </image:image>
+  </url>
+</urlset>
