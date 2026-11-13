@@ -41,6 +41,7 @@
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+    .episode-card.reveal.visible{animation-delay:0s !important;}
   }
   a{color:inherit; text-decoration:none;}
   img,video{display:block; max-width:100%;}
@@ -269,11 +270,12 @@
   /* ---------- Reveal ---------- */
   .reveal{
     opacity:0;
-    transform:translateY(40px);
-    transition:opacity 1s var(--ease-out), transform 1s var(--ease-out);
+    transform:translateY(38px) scale(0.985);
+    filter:blur(6px);
+    transition:opacity 1s var(--ease-out), transform 1s var(--ease-out), filter .85s var(--ease-out);
     will-change:opacity, transform;
   }
-  .reveal.visible{ opacity:1; transform:translateY(0); }
+  .reveal.visible{ opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
   .reveal-delay-1{ transition-delay:0.1s; }
   .reveal-delay-2{ transition-delay:0.2s; }
   .reveal-delay-3{ transition-delay:0.3s; }
@@ -968,30 +970,82 @@
   @media (min-width:1200px){
     .episode-videos{ grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1.4rem; }
   }
-  .episode-videos:has(> .episode-video:only-child){
+  .episode-videos:has(> .episode-card:only-child){
     grid-template-columns:minmax(0, 720px);
     justify-content:center;
   }
   @media (min-width:1200px){
-    .episode-videos:has(> .episode-video:nth-child(2):last-child){
+    .episode-videos:has(> .episode-card:nth-child(2):last-child){
       grid-template-columns:repeat(2, minmax(0, 1fr));
       max-width:900px;
       margin-inline:auto;
     }
   }
+  .episode-card{
+    position:relative;
+    overflow:hidden;
+    padding:0.8rem;
+    border:1px solid rgba(201,205,211,0.12);
+    border-radius:12px;
+    background:linear-gradient(145deg, rgba(28,34,44,0.96), rgba(11,14,19,0.96));
+    box-shadow:0 16px 44px rgba(0,0,0,0.3);
+    transition:transform .55s var(--ease-out), border-color .45s var(--ease-out), box-shadow .55s var(--ease-out);
+  }
+  .episode-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    background:radial-gradient(circle at 50% 0%, rgba(74,123,212,0.22), transparent 68%);
+    transition:opacity .55s var(--ease-out);
+  }
+  .episode-card:hover{
+    transform:translateY(-8px) scale(1.015);
+    border-color:rgba(74,123,212,0.65);
+    box-shadow:0 26px 56px rgba(0,0,0,0.48), 0 0 28px rgba(74,123,212,0.12);
+  }
+  .episode-card:hover::before{ opacity:1; }
+  .episode-card-label{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:0.7rem;
+    padding:0.15rem 0.2rem 0.75rem;
+    color:#f6f3ec;
+    font-size:0.7rem;
+    font-weight:700;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+  }
+  .episode-card-label::after{
+    content:"";
+    width:7px;
+    height:7px;
+    flex:0 0 7px;
+    border-radius:50%;
+    background:var(--blue-bright);
+    box-shadow:0 0 14px rgba(74,123,212,0.8);
+  }
+  @keyframes episode-arrive{
+    from{ opacity:0; transform:translateY(26px) scale(0.98); filter:blur(5px); }
+    to{ opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+  }
+  .episode-card.reveal.visible{ animation:episode-arrive .85s var(--ease-out) both; }
+  .episode-card:nth-child(2).reveal.visible{ animation-delay:.08s; }
+  .episode-card:nth-child(3).reveal.visible{ animation-delay:.16s; }
+  .episode-card:nth-child(4).reveal.visible{ animation-delay:.24s; }
+  .episode-card:nth-child(5).reveal.visible{ animation-delay:.32s; }
+  .episode-card:nth-child(6).reveal.visible{ animation-delay:.4s; }
+  .episode-card:nth-child(7).reveal.visible{ animation-delay:.48s; }
   .episode-video{
+    position:relative;
     width:100%;
     aspect-ratio:16 / 9;
     border:1px solid var(--line-on-dark);
-    border-radius:8px;
+    border-radius:7px;
     background:var(--ink);
-    box-shadow:0 12px 32px rgba(0,0,0,0.28);
-    transition:transform .4s var(--ease-out), border-color .4s var(--ease-out), box-shadow .4s var(--ease-out);
-  }
-  .episode-video:hover{
-    transform:translateY(-4px);
-    border-color:var(--blue-line);
-    box-shadow:0 18px 40px rgba(0,0,0,0.4);
   }
 
   .explorer-cta{
@@ -1476,13 +1530,13 @@
           <span class="explorer-video-count">7 episodios</span>
         </div>
         <div class="episode-videos" aria-label="Videos de Altaris Explorer">
-          <iframe class="episode-video" src="https://www.youtube.com/embed/JryIqOkuzsw" title="Altaris Explorer — video 1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="episode-video" src="https://www.youtube.com/embed/MX7Q_loI7gg" title="Altaris Explorer — video 2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="episode-video" src="https://www.youtube.com/embed/Ewf_Cm2anRk" title="Altaris Explorer — video 3" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="episode-video" src="https://www.youtube.com/embed/L1hZjOIdWRo" title="Altaris Explorer — video 4" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="episode-video" src="https://www.youtube.com/embed/GCtZGSyjAE8" title="Altaris Explorer — video 5" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="episode-video" src="https://www.youtube.com/embed/9uoHUIbRMEg" title="Altaris Explorer — video 6" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          <iframe class="episode-video" src="https://www.youtube.com/embed/JPMfnMmxlhg" title="Altaris Explorer — video 7" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 1</div><iframe class="episode-video" src="https://www.youtube.com/embed/JryIqOkuzsw" title="Altaris Explorer — Capítulo 1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 2</div><iframe class="episode-video" src="https://www.youtube.com/embed/MX7Q_loI7gg" title="Altaris Explorer — Capítulo 2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 3</div><iframe class="episode-video" src="https://www.youtube.com/embed/Ewf_Cm2anRk" title="Altaris Explorer — Capítulo 3" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 4</div><iframe class="episode-video" src="https://www.youtube.com/embed/L1hZjOIdWRo" title="Altaris Explorer — Capítulo 4" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 5</div><iframe class="episode-video" src="https://www.youtube.com/embed/GCtZGSyjAE8" title="Altaris Explorer — Capítulo 5" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 6</div><iframe class="episode-video" src="https://www.youtube.com/embed/9uoHUIbRMEg" title="Altaris Explorer — Capítulo 6" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
+          <article class="episode-card reveal"><div class="episode-card-label">Capítulo 7</div><iframe class="episode-video" src="https://www.youtube.com/embed/JPMfnMmxlhg" title="Altaris Explorer — Capítulo 7" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></article>
         </div>
       </div>
     </div>
