@@ -811,7 +811,7 @@
     isolation:isolate;
   }
   @media (min-width:900px){
-    .explorer{ min-height:100vh; padding:7rem 0; }
+    .explorer{ padding:8rem 0; }
   }
   .explorer .bg{
     position:absolute; inset:0;
@@ -838,20 +838,25 @@
 
   .explorer-inner{
     position:relative; z-index:2;
-    display:grid;
-    grid-template-columns:1fr;
-    gap:2.5rem;
+    display:flex;
+    flex-direction:column;
+    gap:3.5rem;
     width:100%;
   }
+  .explorer-intro{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.8rem;
+    align-items:end;
+  }
   @media (min-width:900px){
-    .explorer-inner{
-      grid-template-columns:0.85fr 1fr;
+    .explorer-intro{
+      grid-template-columns:minmax(0, 0.9fr) minmax(0, 1.1fr);
       gap:5rem;
-      align-items:start;
     }
   }
 
-  .explorer-title-col{ max-width:440px; }
+  .explorer-title-col{ max-width:620px; }
   .explorer-title-col .kicker{
     color:var(--blue-bright);
     display:inline-flex;
@@ -901,7 +906,7 @@
 
   .explorer-content-col{ max-width:620px; }
   @media (min-width:900px){
-    .explorer-content-col{ padding-top:0.5rem; }
+    .explorer-content-col{ justify-self:end; padding-bottom:0.2rem; }
   }
   .explorer-content-col p{
     color:var(--fog);
@@ -914,143 +919,83 @@
     .explorer-content-col p{ font-size:1rem; }
   }
 
-  .episodes{
-    margin-top:2.4rem;
-    display:flex;
-    flex-direction:column;
-    gap:0.7rem;
+  .explorer-library{
+    border-top:1px solid var(--line-on-dark);
+    padding-top:2rem;
   }
-  @media (min-width:900px){ .episodes{ margin-top:2.8rem; } }
-
-  .episode{
-    position:relative;
+  .explorer-library-head{
     display:flex;
+    flex-wrap:wrap;
+    align-items:flex-end;
     justify-content:space-between;
-    align-items:center;
     gap:1rem;
-    padding:1.1rem 1.2rem;
-    border:1px solid var(--line-on-dark);
-    border-radius:6px;
-    background:rgba(22,26,33,0.5);
-    backdrop-filter:blur(6px);
-    -webkit-backdrop-filter:blur(6px);
-    overflow:hidden;
-    isolation:isolate;
-    transition:border-color .45s var(--ease-out), background .45s var(--ease-out), transform .45s var(--ease-out);
+    margin-bottom:1.5rem;
   }
-  @media (min-width:900px){
-    .episode{ padding:1.3rem 1.5rem; }
-  }
-  .episode::before{
-    content:"";
-    position:absolute;
-    left:0; top:0; bottom:0;
-    width:2px;
-    background:linear-gradient(to bottom, var(--blue-bright), transparent);
-    transform:scaleY(0);
-    transform-origin:top;
-    transition:transform .6s var(--ease-out);
-    z-index:1;
-  }
-  .episode:hover{
-    border-color:var(--blue-line);
-    background:rgba(26,31,39,0.75);
-    transform:translateX(4px);
-  }
-  .episode:hover::before{ transform:scaleY(1); }
-
-  .episode-left{
-    display:flex;
-    align-items:center;
-    gap:1rem;
-    min-width:0;
-  }
-  .episode-num{
-    font-family:'Instrument Serif', serif;
-    font-style:italic;
-    font-size:1.6rem;
-    line-height:1;
-    color:var(--blue-bright);
-    opacity:0.75;
-    flex-shrink:0;
-    transition:opacity .4s var(--ease-out), transform .4s var(--ease-out);
-  }
-  @media (min-width:900px){
-    .episode-num{ font-size:1.9rem; }
-  }
-  .episode:hover .episode-num{
-    opacity:1;
-    transform:translateX(2px);
-  }
-  .episode-info{
-    display:flex;
-    flex-direction:column;
-    gap:0.15rem;
-    min-width:0;
-  }
-  .episode-title{
+  .explorer-library-head .kicker{ margin-bottom:0.55rem; }
+  .explorer-library-head h3{
     color:#f6f3ec;
-    font-family:'Instrument Serif', serif;
-    font-size:1.15rem;
-    line-height:1.2;
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
   }
-  @media (min-width:900px){
-    .episode-title{ font-size:1.25rem; }
-  }
-  .episode-sub{
-    font-size:0.68rem;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--fog-dim);
-    font-weight:600;
-  }
-
-  .episode-status{
+  .explorer-video-count{
     display:inline-flex;
     align-items:center;
-    gap:0.5rem;
-    padding:0.35rem 0.75rem;
+    gap:0.55rem;
+    padding:0.5rem 0.8rem;
+    border:1px solid var(--blue-line);
     border-radius:100px;
-    font-size:0.62rem;
+    color:var(--fog);
+    background:var(--blue-soft);
+    font-size:0.68rem;
     font-weight:700;
-    letter-spacing:0.14em;
+    letter-spacing:0.12em;
     text-transform:uppercase;
-    color:var(--fog-dim);
-    background:rgba(242,239,233,0.05);
-    border:1px solid rgba(242,239,233,0.08);
-    white-space:nowrap;
-    flex-shrink:0;
-    transition:color .4s var(--ease-out), border-color .4s var(--ease-out), background .4s var(--ease-out);
+  }
+  .explorer-video-count::before{
+    content:"";
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--blue-bright);
+  }
+  .episode-videos{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.2rem;
   }
   @media (min-width:900px){
-    .episode-status{ font-size:0.66rem; padding:0.4rem 0.85rem; }
+    .episode-videos{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
   }
-  .episode-status::before{
-    content:"";
-    display:inline-block;
-    width:6px; height:6px;
-    border-radius:50%;
-    background:currentColor;
-    opacity:0.7;
+  @media (min-width:1200px){
+    .episode-videos{ grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1.4rem; }
   }
-  .episode-status.production{
-    color:var(--blue-bright);
+  .episode-videos:has(> .episode-video:only-child){
+    grid-template-columns:minmax(0, 720px);
+    justify-content:center;
+  }
+  @media (min-width:1200px){
+    .episode-videos:has(> .episode-video:nth-child(2):last-child){
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      max-width:900px;
+      margin-inline:auto;
+    }
+  }
+  .episode-video{
+    width:100%;
+    aspect-ratio:16 / 9;
+    border:1px solid var(--line-on-dark);
+    border-radius:8px;
+    background:var(--ink);
+    box-shadow:0 12px 32px rgba(0,0,0,0.28);
+    transition:transform .4s var(--ease-out), border-color .4s var(--ease-out), box-shadow .4s var(--ease-out);
+  }
+  .episode-video:hover{
+    transform:translateY(-4px);
     border-color:var(--blue-line);
-    background:var(--blue-soft);
-  }
-  .episode-status.production::before{
-    box-shadow:0 0 0 0 rgba(74,123,212,0.6);
-    animation:pulseBlue 2s infinite;
-    opacity:1;
-  }
-  .episode-status.dev{
-    color:#7d95b8;
-    border-color:rgba(125,149,184,0.25);
-    background:rgba(125,149,184,0.06);
+    box-shadow:0 18px 40px rgba(0,0,0,0.4);
   }
 
   .explorer-cta{
-    margin-top:2.4rem;
+    margin-top:1.4rem;
     display:inline-flex;
     align-items:center;
     gap:0.7rem;
@@ -1066,7 +1011,7 @@
     box-shadow:0 10px 30px -10px rgba(0,0,0,0.5);
   }
   @media (min-width:900px){
-    .explorer-cta{ margin-top:2.8rem; font-size:0.85rem; }
+    .explorer-cta{ margin-top:1.8rem; font-size:0.85rem; }
   }
   .explorer-cta svg{
     width:16px; height:16px;
@@ -1501,50 +1446,45 @@
   <img class="bg" src="assets/explorador-bosque.jpg" alt="Explorador caminando por un bosque con niebla">
   <div class="wrap">
     <div class="explorer-inner">
-
-      <div class="explorer-title-col reveal">
-        <p class="kicker">Altaris Explorer</p>
-        <h2>Recorrer,<br>investigar<br>y <em>contar</em>.</h2>
-        <span class="explorer-badge">Nuevo proyecto</span>
-      </div>
-
-      <div class="explorer-content-col reveal reveal-delay-1">
-        <p>Altaris Explorer es nuestro proyecto de exploración y mini-documentales en YouTube. Vamos a recorrer distintos lugares, investigar sus historias, contar curiosidades y mostrarlos desde una perspectiva audiovisual.</p>
-        <p>Cada episodio es un camino nuevo. Acá vamos a ir sumando, uno a uno, los lugares que encontramos en el camino.</p>
-
-        <div class="episodes">
-          <div class="episode">
-            <div class="episode-left">
-              <span class="episode-num">01</span>
-              <div class="episode-info">
-                <span class="episode-title">Episodio 01 — próximamente</span>
-                <span class="episode-sub">Primer recorrido</span>
-              </div>
-            </div>
-            <span class="episode-status production">En producción</span>
-          </div>
-
-          <div class="episode">
-            <div class="episode-left">
-              <span class="episode-num">02</span>
-              <div class="episode-info">
-                <span class="episode-title">Episodio 02 — próximamente</span>
-                <span class="episode-sub">Segundo recorrido</span>
-              </div>
-            </div>
-            <span class="episode-status dev">En desarrollo</span>
-          </div>
+      <div class="explorer-intro">
+        <div class="explorer-title-col reveal">
+          <p class="kicker">Altaris Explorer</p>
+          <h2>Recorrer,<br>investigar<br>y <em>contar</em>.</h2>
+          <span class="explorer-badge">Nuevo proyecto</span>
         </div>
 
-        <a class="explorer-cta" href="https://www.youtube.com/channel/UCtJEbIoJIXBaByL8ySe3iDg" target="_blank" rel="noopener">
-          Suscribite en YouTube
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M5 12h14"/>
-            <path d="M12 5l7 7-7 7"/>
-          </svg>
-        </a>
+        <div class="explorer-content-col reveal reveal-delay-1">
+          <p>Altaris Explorer es nuestro proyecto de exploración y mini-documentales en YouTube. Vamos a recorrer distintos lugares, investigar sus historias, contar curiosidades y mostrarlos desde una perspectiva audiovisual.</p>
+          <p>Cada episodio es un camino nuevo. Acá vamos a ir sumando, uno a uno, los lugares que encontramos en el camino.</p>
+
+          <a class="explorer-cta" href="https://www.youtube.com/channel/UCtJEbIoJIXBaByL8ySe3iDg" target="_blank" rel="noopener">
+            Suscribite en YouTube
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/>
+              <path d="M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
+      <div class="explorer-library reveal reveal-delay-1">
+        <div class="explorer-library-head">
+          <div>
+            <p class="kicker">La serie</p>
+            <h3>Historias para descubrir</h3>
+          </div>
+          <span class="explorer-video-count">7 episodios</span>
+        </div>
+        <div class="episode-videos" aria-label="Videos de Altaris Explorer">
+          <iframe class="episode-video" src="https://www.youtube.com/embed/JryIqOkuzsw" title="Altaris Explorer — video 1" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/MX7Q_loI7gg" title="Altaris Explorer — video 2" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/Ewf_Cm2anRk" title="Altaris Explorer — video 3" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/L1hZjOIdWRo" title="Altaris Explorer — video 4" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/GCtZGSyjAE8" title="Altaris Explorer — video 5" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/9uoHUIbRMEg" title="Altaris Explorer — video 6" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          <iframe class="episode-video" src="https://www.youtube.com/embed/JPMfnMmxlhg" title="Altaris Explorer — video 7" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </section>
